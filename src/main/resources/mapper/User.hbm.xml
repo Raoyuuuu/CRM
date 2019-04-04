@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-29 10:41:32 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.fjut.domain.User" table="user" >
+        <id name="user_id" column="user_id">
+            <generator class="native" />
+        </id>
+        <property name="user_code" column="user_code" />
+        <property name="user_name" column="user_name" />
+        <property name="user_password" column="user_password" />
+        <property name="user_state" column="user_state" />
+    </class>
+</hibernate-mapping>
