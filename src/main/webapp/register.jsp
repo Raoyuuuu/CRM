@@ -22,15 +22,15 @@
                     <h2>用户注册</h2>
                     <div class="form-group">
                         <label>用户账号</label>
-                        <input type="text" class="form-control" name="user_code" aria-describedby="emailHelp" placeholder="请输入用户名">
+                        <input type="text" class="form-control" name="user_code" autocomplete="new-text" aria-describedby="emailHelp" placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
                         <label>用户姓名</label>
-                        <input type="text" class="form-control" name="user_name" placeholder="请输入真实姓名">
+                        <input type="text" class="form-control" name="user_name" autocomplete="new-text" placeholder="请输入真实姓名">
                     </div>
                     <div class="form-group">
                         <label>登录密码</label>
-                        <input type="password" class="form-control" name="user_password" placeholder="请输入密码">
+                        <input type="password" class="form-control" name="user_password" autocomplete="new-password" placeholder="请输入密码">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">提交</button>
                 </form>
