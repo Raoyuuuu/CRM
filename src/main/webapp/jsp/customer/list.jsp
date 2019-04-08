@@ -21,9 +21,7 @@
 <div class="col-md-12">
     <!-- 客户添加 -->
     <div class="pull-right" style="margin-bottom: 5px">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            新增
-        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static">新增</button>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel">
