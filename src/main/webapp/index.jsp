@@ -15,7 +15,7 @@
 </head>
 <body>
        <!--顶部导航栏--->
-       <nav class="navbar navbar-default navbar-static-top">
+       <nav class="navbar navbar-inverse navbar-static-top">
            <div class="container-fluid">
                <div class="navbar-header">
                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -36,39 +36,34 @@
        <!--中间主体部分-->
 
            <!-- 左侧导航栏 -->
-           <div class="navbar-default navbar-collapse">
-               <ul class="nav">
-                   <li role="presentation">
-                       <a href="nav1.html" target="mainFrame" >导航链接1</a>
-                   </li>
-                   <li role="presentation">
-                       <a href="nav2.html" target="mainFrame">导航链接2</a>
-                   </li>
-                   <li role="presentation">
-                       <a href="nav3.html" target="mainFrame">导航链接3</a>
-                   </li>
-                   <li class="dropdown">
-                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                           导航链接4<span class="caret"></span>
-                       </a>
-                       <ul class="dropdown-menu">
-                           <li>
-                               <a href="nav1.html" target="mainFrame">导航链接4-1</a>
-                           </li>
-                           <li>
-                               <a href="nav2.html" target="mainFrame">导航链接4-2</a>
-                           </li>
-                           <li>
-                               <a href="nav3.html" target="mainFrame">导航链接4-3</a>
-                           </li>
-                       </ul>
-                   </li>
-                   <li role="presentation">
-                       <a href="nav4.html" target="mainFrame">导航链接5</a>
-                   </li>
-               </ul>
-
+           <div class="navbar-default navbar-collapse" style="margin-top: -20px" id="navleft">
+                <ul class="nav">
+                    <li><a href="#sub1" data-toggle="collapse">功能菜单 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                        <ul id="sub1" class="nav collapse">
+                            <li><a href="jsp/customer/list.jsp" target="mainFrame">客户管理</a></li>
+                            <li><a href="#" target="mainFrame">联系人管理</a></li>
+                            <li><a href="#" target="mainFrame">客户拜访管理</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">综合查询 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                    <li><a href="#">统计分析 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                    <li><a href="#">系统管理 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                </ul>
            </div>
+           <!--面包屑导航-->
+           <div class="page-main">
+               <ol class="breadcrumb">
+                   <span class="glyphicon glyphicon-menu-hamburger"></span>
+                   <li><a href="#">Home</a></li>
+                   <li><a href="#">Library</a></li>
+                   <li class="active">Data</li>
+               </ol>
+           </div>
+           <!--主要-->
+       <div class="pageContent">
+
+           <iframe src="jsp/customer/list.jsp" id="mainFrame" name="mainFrame" frameborder="0" width="100%" height="100%" frameBorder="0"></iframe>
+       </div>
 
 
 </body>
