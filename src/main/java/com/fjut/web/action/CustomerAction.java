@@ -23,8 +23,14 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
     private CustomerService customerService;
     public void setCustomerService(CustomerService customerService) {
+
         this.customerService = customerService;
     }
 
+    //新增客户保存
+    public String save(){
+        customerService.save(customer);
+        return NONE;
+    }
 
 }
