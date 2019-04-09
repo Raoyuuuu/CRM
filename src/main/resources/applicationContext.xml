@@ -42,10 +42,12 @@
 		<property name="mappingResources">
 			<list>
 				<value>mapper/User.hbm.xml</value>
+				<value>mapper/Customer.hbm.xml</value>
+				<value>mapper/BaseDict.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
-	
+	<!--用户配置-->
 	<!-- 配置Action -->
 	<bean id="userAction" class="com.fjut.web.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"/>
@@ -60,11 +62,40 @@
 	<bean id="userDao" class="com.fjut.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	
+
+	<!--客户配置-->
+	<bean id="customerAction" class="com.fjut.web.action.CustomerAction" scope="prototype">
+		<property name="customerService" ref="customerService"/>
+	</bean>
+
+	<bean id="customerService" class="com.fjut.service.impl.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDao"/>
+	</bean>
+
+	<bean id="customerDao" class="com.fjut.dao.impl.CustomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!--字典配置-->
+	<bean id="baseDictAction" class="com.fjut.web.action.BaseDictAction" scope="prototype">
+		<property name="baseDictService" ref="baseDictService"/>
+	</bean>
+
+	<bean id="baseDictService" class="com.fjut.service.impl.BaseDictServiceImpl">
+		<property name="baseDictDao" ref="baseDictDao"/>
+	</bean>
+
+	<bean id="baseDictDao" class="com.fjut.dao.impl.BaseDictDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+
+
 	
 	<!-- 开启注解事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>

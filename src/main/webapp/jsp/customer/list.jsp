@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script src="../../js/jquery-3.3.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/customer/list.js"></script>
 </head>
 <style>
     .modal-backdrop {
@@ -34,17 +35,24 @@
                     <div class="modal-body" style="height: 400px;overflow-y: scroll">
                         <form action="#">
                             <div class="form-group">
+                                <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
                                 <label  class="control-label">客户名称:</label>
                                 <input type="text" class="form-control" name="customer_name"  >
                                 <br>
                                 <label  class="control-label ">客户级别:</label>
-                                <input type="text" class="form-control" name="customer_level" >
+                                <select class="form-control" id="customer_level" name="baseDictLevel.dict_id" >
+                                    <option value=""></option>
+                                </select>
                                 <br>
                                 <label  class="control-label ">所属行业:</label>
-                                <input type="text" class="form-control" name="customer_industry" >
+                                <select class="form-control" id="customer_industry" name="baseDictIndustry.dict_id" >
+                                    <option value=""></option>
+                                </select>
                                 <br>
                                 <label  class="control-label ">信息来源:</label>
-                                <input type="text" class="form-control" name="customer_sources" >
+                                <select class="form-control" id="customer_source" name="baseDictSource.dict_id" >
+                                    <option value=""></option>
+                                </select>
                                 <br>
                                 <label  class="control-label ">移动电话:</label>
                                 <input type="text" class="form-control" name="customer_phone" >
