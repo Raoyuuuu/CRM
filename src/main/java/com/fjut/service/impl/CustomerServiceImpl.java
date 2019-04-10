@@ -1,6 +1,7 @@
 package com.fjut.service.impl;
 
 import com.fjut.dao.CustomerDao;
+import com.fjut.domain.Customer;
 import com.fjut.service.CustomerService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,5 +21,10 @@ public class CustomerServiceImpl implements CustomerService {
     public void setCustomerDao(CustomerDao customerDao) {
 
         this.customerDao = customerDao;
+    }
+
+    @Override
+    public void save(Customer customer) {
+        customerDao.save(customer);
     }
 }
