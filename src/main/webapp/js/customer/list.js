@@ -31,7 +31,7 @@ $(function(){
         uniqueId: "cust_id",
         //接受后台传过来的值进行绑定处理的函数
         responseHandler:responseHandler,
-        //queryParamsType:"",
+        queryParamsType:"",
         /* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
            设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber */
         queryParams:queryParams,//一系列操作后向后台发送参数的函数
@@ -95,8 +95,8 @@ function queryParams(params){
     //一系列操作后向后台传递的参数，这里可以传搜索框的值
     //var searchName = $("#searchName").val();
     return{
-         "pageNumber" : params.offset+1,
-         "pageSize" : params.limit
+         "pageNumber" : params.pageNumber,
+         "pageSize" : params.pageSize
         //"searchName" : searchName
     }
 }
