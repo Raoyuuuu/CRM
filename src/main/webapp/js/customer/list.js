@@ -5,7 +5,7 @@ $(function(){
     $table.bootstrapTable({
 
         url:'customer_findAll.action',
-        method:'post',
+        //method:'post',
         contentType: "application/json;charset=utf-8",
         dataType:'json',
         //显示分页工具条
@@ -15,13 +15,13 @@ $(function(){
         //初始化页数
         pageNumber:1,
         //每页显示多少条记录
-        pageSize:3,
-        pageList:[3,5,10],
+        pageSize:5,
+        pageList:[5,10,50],
         paginationPreText:'上一页',
         paginationNextText:'下一页',
         //条纹
         striped:true,
-        height:400,
+        height:373,
         showColumns:false,//内容列下拉框
         showRefresh:false,//刷新按钮
         //服务端分页，还有client，不过不认为除非想玩单机版的，基本都是由服务端进行分页
@@ -103,6 +103,7 @@ function queryParams(params){
 
 
 
+
     // 页面加载函数就会执行：
     // 页面加载，异步查询字典数据：
     // 加载客户来源
@@ -127,14 +128,32 @@ function queryParams(params){
 
 
 });
-
+// async. 默认是 true，即为异步方式，$.ajax执行后，会继续执行ajax后面的脚本，
+// 直到服务器端返回数据后，触发$.ajax里的success方法，这时候执行的是两个线程。
+// async 设置为 false，则所有的请求均为同步请求，在没有返回值之前，同步请求将锁住浏览器，
+// 用户其它操作必须等待请求完成才可以执行。
+function del(cust_id){
+    var flag = confirm("确定删除");
+    if(flag){
+            $.ajax({
+                url:"customer_delete.action",
+                type:"post",
+                async:false,
+                data:{cust_id:cust_id},
+                dataType:'json',
+                success:function (data) {
+                    console.log(data.msg);
+                }
+            })
+    }
+}
 function edit(cust_id){
-    alert("编辑"+cust_id);
+    alert("del"+cust_id);
 }
 
 function add_info() {
     var form = document.getElementById('customerAdd');
     form.submit();
-    window.history.back(-1);
+    //window.location.reload();
 
 }
