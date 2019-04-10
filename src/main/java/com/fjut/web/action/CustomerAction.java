@@ -1,9 +1,17 @@
 package com.fjut.web.action;
 
 import com.fjut.domain.Customer;
+import com.fjut.domain.PageBean;
 import com.fjut.service.CustomerService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
+import org.hibernate.criterion.DetachedCriteria;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @auther: raoyu
@@ -33,4 +41,31 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         return NONE;
     }
 
+    //获取分页数据
+    private Integer pageNumber=1;
+    private Integer pageSize=3;
+
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    //分页查询所有客户信息
+    public String findAll() throws IOException {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Customer.class);
+        PageBean<Customer> pageBean =customerService.findByPage(detachedCriteria,pageNumber,pageSize);
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("total", pageBean.getTotalCount());
+        map.put("rows", pageBean.getList());
+
+        JSONObject jsonObject = JSONObject.fromObject(map);
+        ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
+        ServletActionContext.getResponse().getWriter().println(jsonObject.toString());
+
+        return NONE;
+    }
 }

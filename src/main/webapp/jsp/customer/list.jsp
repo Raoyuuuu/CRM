@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -7,8 +8,12 @@
 
     <title>Document</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../css/bootstrap-table.css">
     <script src="../../js/jquery-3.3.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap-table.js"></script>
+    <script src="../../js/bootstrap-table-zh-CN.js"></script>
     <script src="../../js/customer/list.js"></script>
 </head>
 <style>
@@ -73,32 +78,11 @@
     </div>
 
     <!-- 客户列表显示 -->
-    <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>one</th>
-            <th>two</th>
-            <th>three</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td>sa</td>
-        <td>dwe</td>
-        <td>sa</td>
-        <td>sada</td>
-        </tr>
-        <tr>
-            <td>sa</td>
-            <td>dwe</td>
-            <td>sa</td>
-            <td>sada</td>
-        </tr>
-        </tbody>
 
-    </table>
-    </div>
+        <table id="table"></table>
+
+
+
 </div>
 </body>
 </html>

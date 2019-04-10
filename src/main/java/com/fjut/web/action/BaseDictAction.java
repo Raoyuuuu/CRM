@@ -36,16 +36,14 @@ public class BaseDictAction extends ActionSupport implements ModelDriven<BaseDic
 
     //通过字典类别代码获取字典数据
     public String findByTypeCode() throws IOException {
-          System.out.println("方法执行");
           List<BaseDict> list = baseDictService.findByTypeCode(baseDict.getDict_type_code());
 
           JsonConfig jsonConfig = new JsonConfig();
           jsonConfig.setExcludes(new String[]{"dict_sort","dict_enable","dict_memo"});
           JSONArray jsonArray =  JSONArray.fromObject(list,jsonConfig);
-          System.out.println(jsonArray.toString());
 
-        ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
-        ServletActionContext.getResponse().getWriter().println(jsonArray.toString());
+          ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
+          ServletActionContext.getResponse().getWriter().println(jsonArray.toString());
           return NONE;
     }
 }
