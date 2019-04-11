@@ -81,7 +81,6 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         //先查询
         customer= customerService.findById(customer.getCust_id());
 
-
         //再删除
         customerService.delete(customer);
         return NONE;

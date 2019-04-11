@@ -48,6 +48,7 @@ $(function(){
                 title: "ID",
                 field: "cust_id",
                 align:'center',
+                visible:false,
                 valign: "middle"
             },{
                 title:"客户名称",
@@ -91,9 +92,9 @@ $(function(){
 //onclick="del(' + row.cust_id + ')"
 function operateFormatter(value, row, index) {//赋予的参数
     return [
-        '<button  class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#updateModal"  ' +
+        '<button  class="btn btn-primary"  data-toggle="modal" data-target="#updateModal"  ' +
         'data-backdrop="static" onclick="edit(this)">编辑</button>|',
-        '<button  class="btn btn-danger btn-sm del"  >删除</button>',
+        '<button  class="btn btn-danger  del"  >删除</button>',
     ].join('');
 }
 
@@ -263,7 +264,7 @@ function updateCustomer(){
 $(document).ready( function (){
     //设置bootstrapTable起始高度
     $( '#table' ).bootstrapTable('resetView',{
-        height:380
+        height:400
     } );
     //当表格内容的高度小于外面容器的高度，容器的高度设置为内容的高度，相反时容器设置为窗口的高度-160
     // if($("#table").height()<$(".fixed-table-container").height()){
