@@ -2,8 +2,10 @@ package com.fjut.dao.impl;
 
 import com.fjut.dao.CustomerDao;
 import com.fjut.domain.Customer;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import java.util.List;
@@ -18,8 +20,11 @@ import java.util.List;
  * @throws:
  */
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
+
+
     @Override
     public void save(Customer customer) {
+
         this.getHibernateTemplate().save(customer);
     }
 
@@ -52,5 +57,10 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
     //删除ID查询到的客户
     public void delete(Customer customer) {
         this.getHibernateTemplate().delete(customer);
+    }
+
+    @Override
+    public void update(Customer customer) {
+        this.getHibernateTemplate().update(customer);
     }
 }

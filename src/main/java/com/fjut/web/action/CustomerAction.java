@@ -41,6 +41,14 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         return NONE;
     }
 
+
+
+    //客户修改
+    public  String update() {
+            customerService.update(customer);
+        return NONE;
+    }
+
     //获取分页数据
     private Integer pageNumber=1;
     private Integer pageSize=5;
@@ -69,15 +77,11 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         return NONE;
     }
     //通过ID查询客户再删除
-    public String delete(){
+    public String delete() {
         //先查询
         customer= customerService.findById(customer.getCust_id());
-//
-//        Map<String,Object> map = new HashMap<String,Object>();
-//        if(customer!=null){
-//            map.put("stateCode","1");
-//
-//        }
+
+
         //再删除
         customerService.delete(customer);
         return NONE;

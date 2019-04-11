@@ -5,7 +5,7 @@ import com.fjut.domain.PageBean;
 import org.hibernate.criterion.DetachedCriteria;
 
 public interface CustomerService {
-    void save(Customer customer);
+
 
 
     PageBean<Customer> findByPage(DetachedCriteria detachedCriteria, Integer pageNumber, Integer pageSize);
@@ -13,4 +13,8 @@ public interface CustomerService {
     Customer findById(Long cust_id);
 
     void delete(Customer customer);
+
+    void update(Customer customer);
+
+    void save(Customer customer);
 }
