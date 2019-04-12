@@ -6,8 +6,6 @@ $(function(){
         $(':input','#addForm').not(':button,:submit,:reset').val('').removeAttr('checked').removeAttr('checked');
     });
 
-
-
     var $table = $("#table");
 
     $table.bootstrapTable({
@@ -89,12 +87,12 @@ $(function(){
         ]
     });
 
-//onclick="del(' + row.cust_id + ')"
+//onclick="del(' + row.cust_id + ')"   edit(this)
 function operateFormatter(value, row, index) {//赋予的参数
     return [
         '<button  class="btn btn-primary"  data-toggle="modal" data-target="#updateModal"  ' +
-        'data-backdrop="static" onclick="edit(this)">编辑</button>|',
-        '<button  class="btn btn-danger  del"  >删除</button>',
+        'data-backdrop="static" onclick="edit(this,' + row.cust_id + ')">编辑</button>|',
+        '<button  class="btn btn-danger del" onclick="del(this,' + row.cust_id + ')">删除</button>',
     ].join('');
 }
 
@@ -163,67 +161,66 @@ function queryParams(params){
 // async 设置为 false，则所有的请求均为同步请求，在没有返回值之前，同步请求将锁住浏览器，
 // 用户其它操作必须等待请求完成才可以执行。
 
-$(document).on("click",".del",function(){//找到点击的类目为del的按钮实现删除
-    var flag = confirm("确定删除");
-    //拿到当前行的ID
-    var $cust= $(this).parents('tr').children('td');
-    var id = $cust.eq(0).text();
-    //console.log(id)
-    if(flag) {
-        $.ajax({
-                url:"customer_delete.action",
-                type:"post",
-                async:false,
-                dataType:'json',
-                data:{"cust_id":id},
-                success: function (data,textStatus,request) {
-
-                }
-
-              });
-            }
-    $(this).parents("tr").remove();
-    })
-
-// function del(cust_id){
+// $(document).on("click",".del",function(){//找到点击的类目为del的按钮实现删除
 //     var flag = confirm("确定删除");
-//     if(flag){
-//             $.ajax({
+//     //拿到当前行的ID
+//     var $cust= $(this).parents('tr').children('td');
+//     var id = $cust.eq(0).text();
+//     //console.log(id)
+//     if(flag) {
+//         $.ajax({
 //                 url:"customer_delete.action",
 //                 type:"post",
 //                 async:false,
 //                 dataType:'json',
-//                 data:{"cust_id":cust_id},
+//                 data:{"cust_id":id},
 //                 success: function (data,textStatus,request) {
-//                     console.log(request)
-//                      // if (stateCode===1) {
-//                      //     window.alert("删除成功");
-//                      //     window.location.reload();
-//                      // }
+//                     if(request.status===200){
+//                         alert("删除成功")
+//                         $(this).parents("tr").remove();
+//                     }
+//
 //                 }
-//             });
-//     }
-// }
+//               });
+//             }
+//
+//     })
 
-function edit(obj){
-
+function del(obj,id){
+    var flag = confirm("确定删除");
+    if(flag){
+            $.ajax({
+                url:"customer_delete.action",
+                type:"post",
+                async:false,
+                dataType:'json',
+                data:{'cust_id':id},
+                success: function (data,textStatus,request) {
+                    console.log(request)
+                     // if (stateCode===1) {
+                     //     window.alert("删除成功");
+                     //     window.location.reload();
+                     // }
+                }
+            });
+    }
+    //$(obj).parents("tr").remove();
+    window.location.reload();
+}
+function edit(obj,id) {
     var $td= $(obj).parents('tr').children('td');
-    var td_id = $td.eq(0).text();
-    var td_name = $td.eq(1).text();
-    // var td_source = $td.eq(2).text();
-    // var td_industry = $td.eq(3).text();
-    // var td_level = $td.eq(4).text();
-    var td_phone = $td.eq(5).text();
-    var td_email = $td.eq(6).text();
+    //var td_id = $td.eq(0).text();
+    var td_name = $td.eq(0).text();
+    var td_phone = $td.eq(4).text();
+    var td_email = $td.eq(5).text();
 
-    $("#edit_id").val(td_id);
+    $("#edit_id").val(id);
     $("#edit_name").val(td_name);
-    // $("#edit_level").val(td_level);
-    // $("#edit_industry").val(td_industry);
-    // $("#edit_source").val(td_source);
     $("#edit_phone").val(td_phone);
     $("#edit_email").val(td_email);
+
 }
+
 
 function addCustomer() {
     $.ajax({
@@ -235,8 +232,8 @@ function addCustomer() {
         success: function (data,textStatus,request) {
 
             if (request.status===200) {
-                //window.alert("添加成功");
-                window.location.reload();
+                window.alert("添加成功");
+                window.location.reload()
             }
 
         }
@@ -252,9 +249,8 @@ function updateCustomer(){
         data: $('#updateForm').serialize(),
         success: function (data,textStatus,request) {
 
-            console.log(request.status)
             if(request.status===200){
-                //window.alert("修改成功");
+                window.alert("修改成功");
                 window.location.reload();
             }
         }
@@ -274,3 +270,4 @@ $(document).ready( function (){
     // }
 
 });
+

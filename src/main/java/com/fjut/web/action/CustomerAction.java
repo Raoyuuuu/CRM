@@ -9,6 +9,7 @@ import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,18 +36,29 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         this.customerService = customerService;
     }
 
+    public String list(){
+        return "list";
+    }
+
+
     //新增客户保存
     public String save(){
         customerService.save(customer);
         return NONE;
     }
 
-
-
     //客户修改
     public  String update() {
             customerService.update(customer);
         return NONE;
+    }
+
+    //通过ID查询客户再删除
+    public String delete() {
+        //先查询
+       customer= customerService.findById(customer.getCust_id());
+       customerService.delete(customer);
+       return NONE;
     }
 
     //获取分页数据
@@ -76,13 +88,5 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
         return NONE;
     }
-    //通过ID查询客户再删除
-    public String delete() {
-        //先查询
-        customer= customerService.findById(customer.getCust_id());
 
-        //再删除
-        customerService.delete(customer);
-        return NONE;
-    }
 }

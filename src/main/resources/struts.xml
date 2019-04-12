@@ -16,7 +16,8 @@
 
 		<!--客户-->
 		<action name="customer_*" class="customerAction" method="{1}">
-
+			<result name="list">jsp/customer/list.jsp</result>
+			<result type="redirectAction">customer_findAll.action</result>
 		</action>
 
 		<!--字典-->

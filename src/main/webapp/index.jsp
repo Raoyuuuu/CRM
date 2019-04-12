@@ -40,14 +40,34 @@
                 <ul class="nav">
                     <li><a href="#sub1" data-toggle="collapse">功能菜单 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
                         <ul id="sub1" class="nav collapse">
-                            <li><a href="jsp/customer/list.jsp" target="mainFrame">客户管理</a></li>
+                            <li><a href="${pageContext.request.contextPath}/customer_list.action" target="mainFrame">客户管理</a></li>
                             <li><a href="#" target="mainFrame">联系人管理</a></li>
                             <li><a href="#" target="mainFrame">客户拜访管理</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">综合查询 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-                    <li><a href="#">统计分析 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-                    <li><a href="#">系统管理 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+
+                    <li><a href="#sub2" data-toggle="collapse">综合查询 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                        <ul id="sub2" class="nav collapse">
+                            <li><a href="#" target="mainFrame">First Name</a></li>
+                            <li><a href="#" target="mainFrame">First Name</a></li>
+                            <li><a href="#" target="mainFrame">First Name</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#sub3" data-toggle="collapse">统计分析 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                        <ul id="sub3" class="nav collapse">
+                            <li><a href="#" target="mainFrame">First Name</a></li>
+                            <li><a href="#" target="mainFrame">First Name</a></li>
+                            <li><a href="#" target="mainFrame">First Name</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#sub4" data-toggle="collapse">系统管理 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                        <ul id="sub4" class="nav collapse">
+                            <li><a href="#" target="mainFrame">管理员</a></li>
+                            <li><a href="#" target="mainFrame">字典</a></li>
+                            <li><a href="#" target="mainFrame">退出</a></li>
+                        </ul>
+                    </li>
                 </ul>
            </div>
            <!--面包屑导航-->
@@ -62,7 +82,7 @@
            <!--主要-->
        <div class="pageContent">
 
-           <iframe src="jsp/customer/list.jsp" id="mainFrame" name="mainFrame" frameborder="0" width="100%" height="100%" frameBorder="0"></iframe>
+           <iframe src="wellcome.jsp" id="mainFrame" name="mainFrame" frameborder="0" width="100%" height="100%" frameBorder="0"></iframe>
        </div>
 
 
